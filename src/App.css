@@ -1,0 +1,133 @@
+/* src/App.css */
+
+@import '@reactflow/node-resizer/dist/style.css';
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.artboard-container {
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  background-color: #2a2a2a;
+  position: relative; /* Z-index için ana konteyner */
+}
+
+.react-flow__background {
+  background-color: #2a2a2a;
+}
+
+/* REACT FLOW'UN KENDİSİ İÇİN Z-INDEX AYARI EKLE! */
+/* Bu, en kritik değişikliktir. ReactFlow'un tuvalinin diğer elementlerin altında kalmasını engeller. */
+.react-flow {
+  z-index: 1; /* Diğer her şeyin üzerinde, menülerden alt, ama tıklanabilir. */
+}
+
+/* React Flow Kontrolleri (Zoom, Kilitleme butonları) */
+/* Şimdilik kaldırılmış olsalar da, stilleri burada tutuyorum. */
+/* Eğer geri eklerseniz, bu z-index değerleri önemli olacaktır. */
+.react-flow__controls {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  left: unset;
+  z-index: 100; /* Menü çubuğundan daha düşük ama tuvalden yüksek */
+}
+.react-flow__controls button {
+  background-color: #3a3a3a;
+  border: 1px solid #555;
+  color: white;
+}
+.react-flow__controls button:hover {
+  background-color: #4a4a4a;
+}
+
+/* Üst menü barı */
+.menu-bar {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 200; /* EN ÜST KATMAN */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1a1a1a;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Proje Adı Input Stili */
+.project-name-input {
+  background-color: #3a3a3a;
+  border: 1px solid #555;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  width: 200px;
+  transition: all 0.2s;
+}
+.project-name-input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #4a4a4a;
+}
+
+
+/* Dropdown Menü Stilleri */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #3a3a3a;
+  color: white;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 80px;
+}
+.dropdown-button:hover {
+  background-color: #4a4a4a;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #3a3a3a;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  z-index: 201; /* Dropdown menünün kendi içeriği de en üstte olmalı */
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 5px 0;
+  margin-top: 5px;
+}
+
+.dropdown-item {
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+.dropdown-item:hover {
+  background-color: #007bff;
+}
